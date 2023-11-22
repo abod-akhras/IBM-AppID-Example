@@ -33,10 +33,10 @@ passport.use(
 );
 
 // Handle callback
-app.get("/appid/callback", passport.authenticate(WebAppStrategy.STRATEGY_NAME));
+app.get("/appid/callback", passport.authenticate(WebAppStrategy.STRATEGY_NAME, { keepSessionInfo: true }));
 
 // Protect the whole app
-app.use(passport.authenticate(WebAppStrategy.STRATEGY_NAME));
+app.use(passport.authenticate(WebAppStrategy.STRATEGY_NAME, { keepSessionInfo: true }));
 
 // Serve static resources
 app.use(express.static("./public"));
